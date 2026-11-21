@@ -1,0 +1,196 @@
+# ============================================================
+#  EncantamientosX - configuración
+#  Los textos usan formato MiniMessage: <red>texto</red>, <gold>, <bold>, etc.
+# ============================================================
+
+# ---------- Yunque ----------
+yunque:
+  # Costo en niveles de XP por cada nivel final de un encantamiento mejorado.
+  # Ej: subir Afilado a nivel 7 cuesta 7 * costo-por-nivel
+  costo-por-nivel: 2
+  # Costo máximo permitido. El cliente de Minecraft muestra "Demasiado caro" a partir
+  # de 40 niveles, por eso el valor por defecto es 39.
+  costo-maximo: 39
+
+# ---------- Economía (Vault) ----------
+# Se necesita Vault + un plugin de economía (EssentialsX, CMI, etc.)
+# Con usar-vault: false los libros de la tienda se entregan gratis (útil para pruebas).
+economia:
+  usar-vault: true
+  simbolo: "$"
+
+# ---------- Precios ----------
+# Precio del libro = precio-base del encantamiento * multiplicador ^ (nivel - 1)
+# Con multiplicador 2 el precio se duplica por nivel, igual que combinar dos libros
+# del nivel anterior en el yunque (IV + IV = V).
+precios:
+  multiplicador: 2.0
+
+# ---------- Mensajes ----------
+mensajes:
+  prefijo: "<gradient:#ff5555:#ffaa00><bold>KRYOS</bold></gradient> <dark_gray>»</dark_gray> "
+  sin-permiso: "<red>No tienes permiso para hacer eso.</red>"
+  solo-jugadores: "<red>Este comando solo puede usarlo un jugador.</red>"
+  sin-economia: "<red>La economía no está disponible ahora mismo. Avisa a un administrador.</red>"
+  sin-dinero: "<red>No tienes suficiente dinero. Necesitas <gold>{precio}</gold>.</red>"
+  compra-exitosa: "<green>Compraste <gold>{encantamiento} {nivel}</gold> por <gold>{precio}</gold>.</green>"
+  inventario-lleno: "<yellow>Tu inventario estaba lleno, el libro cayó al suelo.</yellow>"
+  recargado: "<green>Configuración recargada. Encantamientos cargados: <gold>{cantidad}</gold>.</green>"
+  libro-dado: "<green>Entregaste <gold>{cantidad}x {encantamiento} {nivel}</gold> a <gold>{jugador}</gold>.</green>"
+  libro-recibido: "<green>Recibiste <gold>{cantidad}x {encantamiento} {nivel}</gold>.</green>"
+  jugador-no-encontrado: "<red>Jugador no encontrado.</red>"
+  encantamiento-no-encontrado: "<red>Ese encantamiento no existe en la lista. Usa <white>/encx lista</white>.</red>"
+  nivel-invalido: "<red>Nivel inválido. Para <gold>{encantamiento}</gold> debe ser de 1 a {max}.</red>"
+  uso-dar: "<yellow>Uso: /encx dar <jugador> <encantamiento> <nivel> [cantidad]</yellow>"
+
+# ---------- Menús ----------
+menu:
+  titulo-principal: "<dark_gray>Tienda de Encantamientos</dark_gray>"
+  titulo-niveles: "<dark_gray>{encantamiento} - Elige nivel</dark_gray>"
+  nombre-encantamiento: "<gradient:#ffaa00:#ff55ff>{encantamiento}</gradient>"
+  lore-principal:
+    - "<gray>Nivel máximo: <white>{max}</white>"
+    - "<gray>Desde: <gold>{precio_minimo}</gold>"
+    - ""
+    - "<yellow>Clic para elegir nivel"
+  nombre-nivel: "<gold>{encantamiento} {nivel}</gold>"
+  lore-nivel:
+    - "<gray>Precio: <gold>{precio}</gold>"
+    - ""
+    - "<yellow>Clic para comprar el libro"
+  boton-volver: "<red>Volver</red>"
+
+# ---------- Encantamientos disponibles ----------
+# La clave es el nombre interno de vanilla (minecraft:<clave>).
+# max: nivel máximo (1-10)   precio: precio base del nivel I
+# Quita un encantamiento de la lista (o ponlo en max: 0) para descartarlo.
+# Si una clave no existe en tu versión, el plugin la ignora y avisa en consola.
+#
+# Descartados a propósito (efecto fijo, el nivel no cambia nada):
+# mending, silk_touch, infinity, flame, multishot, channeling, aqua_affinity,
+# maldiciones. También depth_strider (vanilla lo limita a nivel 3 de efecto).
+encantamientos:
+  # --- Armadura ---
+  protection:
+    nombre: "Protección"
+    max: 10
+    precio: 500
+  fire_protection:
+    nombre: "Protección contra el fuego"
+    max: 10
+    precio: 400
+  blast_protection:
+    nombre: "Protección contra explosiones"
+    max: 10
+    precio: 400
+  projectile_protection:
+    nombre: "Protección contra proyectiles"
+    max: 10
+    precio: 400
+  feather_falling:
+    nombre: "Caída de pluma"
+    max: 10
+    precio: 300
+  respiration:
+    nombre: "Respiración"
+    max: 10
+    precio: 300
+  thorns:
+    nombre: "Espinas"
+    max: 10
+    precio: 400
+  soul_speed:
+    nombre: "Velocidad del alma"
+    max: 10
+    precio: 400
+  swift_sneaking:
+    nombre: "Sigilo veloz"
+    max: 10
+    precio: 400
+  # --- Armas ---
+  sharpness:
+    nombre: "Afilado"
+    max: 10
+    precio: 500
+  smite:
+    nombre: "Golpeo"
+    max: 10
+    precio: 400
+  bane_of_arthropods:
+    nombre: "Perdición de los artrópodos"
+    max: 10
+    precio: 400
+  knockback:
+    nombre: "Empuje"
+    max: 10
+    precio: 300
+  fire_aspect:
+    nombre: "Aspecto ígneo"
+    max: 10
+    precio: 400
+  looting:
+    nombre: "Botín"
+    max: 10
+    precio: 500
+  sweeping_edge:
+    nombre: "Filo de barrido"
+    max: 10
+    precio: 400
+  # --- Mazas y lanzas ---
+  density:
+    nombre: "Densidad"
+    max: 10
+    precio: 500
+  breach:
+    nombre: "Brecha"
+    max: 10
+    precio: 500
+  lunge:
+    nombre: "Embestida"
+    max: 10
+    precio: 500
+  # --- Herramientas ---
+  efficiency:
+    nombre: "Eficiencia"
+    max: 10
+    precio: 500
+  fortune:
+    nombre: "Fortuna"
+    max: 10
+    precio: 800
+  # --- Arcos y ballestas ---
+  power:
+    nombre: "Poder"
+    max: 10
+    precio: 500
+  punch:
+    nombre: "Retroceso"
+    max: 10
+    precio: 300
+  quick_charge:
+    nombre: "Carga rápida"
+    max: 5
+    precio: 400
+  # --- Tridente ---
+  impaling:
+    nombre: "Empalamiento"
+    max: 10
+    precio: 400
+  riptide:
+    nombre: "Propulsión acuática"
+    max: 5
+    precio: 400
+  # --- Pesca ---
+  luck_of_the_sea:
+    nombre: "Suerte del mar"
+    max: 10
+    precio: 400
+  lure:
+    nombre: "Atracción"
+    max: 10
+    precio: 400
+  # --- Universal ---
+  unbreaking:
+    nombre: "Irrompibilidad"
+    max: 10
+    precio: 600

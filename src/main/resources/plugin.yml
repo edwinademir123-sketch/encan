@@ -1,0 +1,30 @@
+name: EncantamientosX
+version: '${project.version}'
+main: com.kryos.encantamientosx.EncantamientosX
+api-version: '1.21'
+authors: [KRYOS MC]
+description: Encantamientos vanilla hasta nivel X, combinables en el yunque y vendidos como libros en una tienda.
+softdepend: [Vault]
+
+commands:
+  tiendaenc:
+    description: Abre la tienda de libros de encantamientos
+    aliases: [tiendaencantamientos, enchshop]
+    usage: /tiendaenc
+    permission: encantamientosx.tienda
+  encx:
+    description: Comandos de administración de EncantamientosX
+    aliases: [encantamientosx]
+    usage: /encx <dar|lista|recargar>
+    permission: encantamientosx.admin
+
+permissions:
+  encantamientosx.tienda:
+    description: Permite abrir la tienda de encantamientos
+    default: true
+  encantamientosx.yunque:
+    description: Permite subir encantamientos por encima del máximo vanilla en el yunque
+    default: true
+  encantamientosx.admin:
+    description: Comandos de administración
+    default: op
